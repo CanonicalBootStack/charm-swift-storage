@@ -152,3 +152,15 @@ options:
     description: |
       YAML formatted associative array of sysctl values, e.g.:
       '{ kernel.pid_max : 4194303 }'
+  statsd-port:
+    default: 0
+    type: int
+    descritipon: |
+      Port on unit's localhost to send statsd samples.
+      If set to 0, do not enable statsd sampling.
+  statsd-sample-rate:
+    default: 1.0
+    type: float
+    descritipon: |
+      Sample rate determines what percentage of the metric points a
+      client should send to the server.  Requires statsd-port to be non-zero.
