@@ -139,6 +139,15 @@ options:
     default: "-m -r 60 180 10 20"
     type: string
     description: String appended to nagios check
+  nagios-replication-check-params:
+    default: "-pattern replicated -logfile /var/log/syslog -interval 15 -w 2 -c 1 -reverse"
+    type: string
+    description: |
+      String appended to check_timed_logs.pl looking for object-replicator log continuation
+      "-pattern" is the string to match in the log file
+      "-interval" is in minutes
+      "-reverse" allows to check for a minimum of $warn or $crit lines within last $interval
+      Set to blank string "" to disable the check.
   nagios_context:
     default: "juju"
     type: string

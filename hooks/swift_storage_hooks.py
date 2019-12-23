@@ -340,6 +340,9 @@ def update_nrpe_config():
                        'check_swift_storage.py'),
           os.path.join(NAGIOS_PLUGINS, 'check_swift_storage.py'))
     rsync(os.path.join(os.getenv('CHARM_DIR'), 'files', 'nrpe-external-master',
+                       'check_timed_logs.pl'),
+          os.path.join(NAGIOS_PLUGINS, 'check_timed_logs.pl'))
+    rsync(os.path.join(os.getenv('CHARM_DIR'), 'files', 'nrpe-external-master',
                        'check_swift_service'),
           os.path.join(NAGIOS_PLUGINS, 'check_swift_service'))
     rsync(os.path.join(os.getenv('CHARM_DIR'), 'files', 'sudo',
@@ -359,6 +362,16 @@ def update_nrpe_config():
         check_cmd='check_swift_storage.py {}'.format(
             config('nagios-check-params'))
     )
+    if config('nagios-replication-check-params'):
+        nrpe_setup.add_check(
+            shortname='swift_replicator_health',
+            description='Check swift object replicator log reporting',
+            check_cmd='check_timed_logs.pl {}'.format(
+                config('nagios-replication-check-params'))
+        )
+    else:
+        nrpe_setup.remove_check(shortname='swift_replicator_health')
+
     nrpe.add_init_service_checks(nrpe_setup, SWIFT_SVCS, current_unit)
     nrpe_setup.write()
 

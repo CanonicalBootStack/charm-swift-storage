@@ -95,7 +95,7 @@ from charmhelpers.core.unitdata import kv
 PACKAGES = [
     'swift', 'swift-account', 'swift-container', 'swift-object',
     'xfsprogs', 'gdisk', 'lvm2', 'python-jinja2', 'python-psutil',
-    'ufw',
+    'ufw', 'libfile-readbackwards-perl', 'libtime-piece-perl',
 ]
 
 VERSION_PACKAGE = 'swift-account'
