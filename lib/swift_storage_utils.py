@@ -79,6 +79,7 @@ from charmhelpers.core.decorators import (
 PACKAGES = [
     'swift', 'swift-account', 'swift-container', 'swift-object',
     'xfsprogs', 'gdisk', 'lvm2', 'python-jinja2', 'python-psutil',
+    'libfile-readbackwards-perl', 'libtime-piece-perl',
 ]
 
 VERSION_PACKAGE = 'swift-account'
