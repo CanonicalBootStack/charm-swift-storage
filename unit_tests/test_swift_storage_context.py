@@ -92,6 +92,7 @@ class SwiftStorageContextTests(CharmTestCase):
         self.test_config.set('object-max-connections', '10')
         self.test_config.set('object-rsync-timeout', '950')
         self.test_config.set('object-handoffs-first', True)
+        self.test_config.set('file-allocation-reserve', '10737418240')
         ctxt = swift_context.SwiftStorageServerContext()
         result = ctxt()
         ex = {
@@ -106,6 +107,7 @@ class SwiftStorageContextTests(CharmTestCase):
             'object_max_connections': '10',
             'object_rsync_timeout': '950',
             'object_handoffs_first': True,
+            'fallocate_reserve': '10737418240',
             'statsd_host': '',
             'statsd_port': 3125,
             'statsd_sample_rate': 1.0
