@@ -114,6 +114,13 @@ options:
     type: int
     description: |
       Max duration of a partition rsync (in seconds).
+  file-allocation-reserve:
+    default: 0
+    type: int
+    description: |
+      Set the reserve space for the swift filesystem mounts.
+      If a disk has less than this amount of space (in bytes) free, writes
+      will be handed off to another disk in the ring.
   object-handoffs-first:
     type: boolean
     default: False
